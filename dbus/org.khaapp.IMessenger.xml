@@ -1,0 +1,103 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<node>
+  <interface name="org.khaapp.IMessenger">
+
+    <method name="GetStatus">
+      <arg direction="out" type="s" name="status"/>
+    </method>
+
+    <method name="RequestLogin">
+    </method>
+
+    <method name="Logout"/>
+
+    <method name="SendTextMessage">
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="in"  type="s" name="text"/>
+      <arg direction="out" type="s" name="message_id"/>
+    </method>
+
+    <method name="GetChats">
+      <arg direction="out" type="aa{sv}" name="chats"/>
+    </method>
+
+    <method name="GetMessages">
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="in"  type="i" name="limit"/>
+      <arg direction="in"  type="i" name="offset"/>
+      <arg direction="out" type="aa{sv}" name="messages"/>
+    </method>
+
+    <method name="GetGroupInfo">
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="out" type="a{sv}" name="info"/>
+    </method>
+
+    <method name="GetProfilePicture">
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="out" type="s" name="local_path"/>
+    </method>
+
+    <method name="SearchMessages">
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="in"  type="s" name="query"/>
+      <arg direction="out" type="aa{sv}" name="messages"/>
+    </method>
+
+    <method name="DownloadMedia">
+      <arg direction="in"  type="s" name="message_id"/>
+      <arg direction="in"  type="s" name="jid"/>
+      <arg direction="out" type="s" name="local_path"/>
+    </method>
+
+    <method name="MarkAsRead">
+      <arg direction="in" type="s" name="jid"/>
+    </method>
+
+    <method name="FetchLinkPreview">
+      <arg direction="in"  type="s" name="url"/>
+      <arg direction="out" type="a{sv}" name="preview"/>
+    </method>
+
+    <signal name="QRCodeUpdated">
+      <arg type="s" name="qr_data"/>
+    </signal>
+
+    <signal name="LoginSuccessful">
+      <arg type="s" name="phone_number"/>
+    </signal>
+
+    <signal name="MessageReceived">
+      <arg type="s" name="jid"/>
+      <arg type="s" name="sender_name"/>
+      <arg type="s" name="text"/>
+      <arg type="x" name="timestamp_unix"/>
+    </signal>
+
+    <signal name="ConnectionStatusChanged">
+      <arg type="s" name="status"/>
+    </signal>
+
+    <signal name="TypingStarted">
+      <arg type="s" name="jid"/>
+      <arg type="s" name="sender_jid"/>
+    </signal>
+
+    <signal name="TypingStopped">
+      <arg type="s" name="jid"/>
+      <arg type="s" name="sender_jid"/>
+    </signal>
+
+    <signal name="MessageAcknowledged">
+      <arg type="s" name="message_id"/>
+      <arg type="i" name="receipt_type"/>
+    </signal>
+
+    <signal name="AvatarUpdated">
+      <arg type="s" name="jid"/>
+      <arg type="s" name="local_path"/>
+    </signal>
+
+  </interface>
+</node>

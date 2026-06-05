@@ -1,0 +1,69 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    name: Build and release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.22"
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libsqlite3-dev pkg-config gcc cmake ninja-build \
+            extra-cmake-modules qt6-base-dev qt6-declarative-dev \
+            qt6-multimedia-dev libkf6kirigami2-dev libkf6notifications-dev \
+            libkf6wallet-dev libkf6kio-dev
+
+      - name: Build daemon
+        run: |
+          cd daemon
+          CGO_ENABLED=1 GOFLAGS="-mod=vendor" go build -trimpath -ldflags="-s -w" \
+            -o ../dist/khaapp-daemon-linux-amd64 ./cmd
+
+      - name: Build frontend
+        run: |
+          cmake -B build -S . -GNinja -DCMAKE_BUILD_TYPE=Release
+          cmake --build build --parallel
+          mkdir -p dist
+          cp build/app/khaapp-bin dist/khaapp-frontend-linux-amd64
+
+      - name: Create release archive
+        run: |
+          mkdir -p dist/khaapp-${{ github.ref_name }}
+          cp dist/khaapp-daemon-linux-amd64 dist/khaapp-${{ github.ref_name }}/khaapp-daemon
+          cp dist/khaapp-frontend-linux-amd64 dist/khaapp-${{ github.ref_name }}/khaapp-bin
+          cp packaging/aur/khaapp-native-launcher.sh dist/khaapp-${{ github.ref_name }}/khaapp
+          chmod +x dist/khaapp-${{ github.ref_name }}/khaapp
+          tar -czf dist/khaapp-${{ github.ref_name }}-linux-amd64.tar.gz \
+            -C dist khaapp-${{ github.ref_name }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/khaapp-*.tar.gz
+          body: |
+            ## KhaApp ${{ github.ref_name }}
+
+            Unofficial WhatsApp client for KDE Plasma.
+
+            **Disclaimer**: This is an unofficial client not affiliated with Meta.
+            Use at your own risk. May violate WhatsApp Terms of Service.
+
+            ### Installation
+            See README.md for full instructions.
+
+            ### Changes
+            See CHANGELOG.md.

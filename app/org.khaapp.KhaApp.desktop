@@ -1,0 +1,14 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=KhaApp
+Comment=Unofficial native WhatsApp client for KDE Plasma
+Comment[it]=Client nativo WhatsApp non ufficiale per KDE Plasma
+Exec=khaapp
+Icon=khaapp
+Terminal=false
+Categories=Network;InstantMessaging;Qt;KDE;
+Keywords=WhatsApp;messaging;chat;instant;
+StartupNotify=true
+StartupWMClass=khaapp
+X-GNOME-UsesNotifications=true

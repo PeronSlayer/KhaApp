@@ -1,0 +1,52 @@
+app-id: org.khaapp.KhaApp
+runtime: org.kde.Platform
+runtime-version: "6.8"
+sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+command: khaapp-launcher.sh
+rename-icon: khaapp
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --share=ipc
+  - --device=dri
+  - --share=network
+  - --own-name=org.khaapp.Daemon
+  - --talk-name=org.kde.kdeconnect.daemon
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=com.canonical.AppMenu.Registrar
+  - --talk-name=org.kde.kwalletd6
+  - --talk-name=org.kde.kwalletd5
+  - --filesystem=xdg-cache/khaapp:create
+  - --filesystem=xdg-data/khaapp:create
+  - --filesystem=xdg-download:create
+build-options:
+  env:
+    GOROOT: /usr/lib/sdk/golang
+    GOPATH: /run/build/khaapp-daemon/gopath
+    GOFLAGS: -mod=vendor
+    CGO_ENABLED: "1"
+modules:
+  - name: khaapp-daemon
+    buildsystem: simple
+    subdir: daemon
+    build-commands:
+      - export PATH="$GOROOT/bin:$PATH"
+      - go build -v -trimpath -ldflags="-s -w" -o khaapp-daemon ./cmd
+      - install -Dm755 khaapp-daemon /app/bin/khaapp-daemon
+    sources:
+      - type: dir
+        path: ../..
+  - name: khaapp
+    buildsystem: cmake-ninja
+    subdir: app
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/app
+    post-install:
+      - install -Dm755 ../packaging/flatpak/khaapp-launcher.sh /app/bin/khaapp-launcher.sh
+    sources:
+      - type: dir
+        path: ../..

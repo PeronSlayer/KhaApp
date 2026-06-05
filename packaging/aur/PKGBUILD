@@ -1,0 +1,60 @@
+# Maintainer: KhaApp contributors
+pkgname=khaapp
+pkgver=0.1.0.beta.1
+pkgrel=1
+pkgdesc="Unofficial native WhatsApp client for KDE Plasma"
+arch=('x86_64')
+url="https://github.com/khaapp/khaapp"
+license=('GPL3')
+depends=(
+  'qt6-base'
+  'qt6-declarative'
+  'qt6-multimedia'
+  'kirigami'
+  'knotifications'
+  'kwallet'
+  'kf6-kio'
+  'sqlite'
+)
+makedepends=(
+  'go'
+  'cmake'
+  'extra-cmake-modules'
+  'ninja'
+  'base-devel'
+  'pkg-config'
+  'git'
+)
+optdepends=(
+  'kdeconnect: phone connectivity and file sharing'
+  'kwalletmanager: manage app lock credentials'
+)
+source=("$pkgname-$pkgver.tar.gz::https://github.com/khaapp/khaapp/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  export CGO_ENABLED=1
+  export GOFLAGS="-mod=vendor"
+  mkdir -p build-daemon
+
+  cd daemon
+  go build -v -trimpath -ldflags="-s -w" -o ../build-daemon/khaapp-daemon ./cmd
+  cd ..
+
+  cmake -B build-qt -S app \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -GNinja
+  ninja -C build-qt
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -Dm755 build-daemon/khaapp-daemon "$pkgdir/usr/bin/khaapp-daemon"
+  DESTDIR="$pkgdir" ninja -C build-qt install
+  install -Dm755 packaging/aur/khaapp-native-launcher.sh "$pkgdir/usr/bin/khaapp"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

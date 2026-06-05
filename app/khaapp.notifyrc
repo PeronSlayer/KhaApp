@@ -1,0 +1,8 @@
+[Global]
+IconName=khaapp
+Comment=KhaApp notifications
+
+[Event/messageReceived]
+Name=Message received
+Comment=A new WhatsApp message arrived
+Action=Popup

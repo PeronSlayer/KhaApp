@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.khaapp.KhaApp</id>
+  <name>KhaApp</name>
+  <summary>Unofficial WhatsApp client for KDE Plasma</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer id="org.khaapp">
+    <name>KhaApp contributors</name>
+  </developer>
+  <launchable type="desktop-id">org.khaapp.KhaApp.desktop</launchable>
+  <icon type="stock">khaapp</icon>
+  <categories>
+    <category>Network</category>
+    <category>InstantMessaging</category>
+  </categories>
+  <description>
+    <p>KhaApp is a native WhatsApp client for KDE Plasma, built with Qt6 and Kirigami. It uses a separate background daemon to handle the WhatsApp protocol, communicating with the frontend via D-Bus.</p>
+    <p>DISCLAIMER: KhaApp is an unofficial, community-developed client and is not affiliated with or endorsed by Meta Platforms, Inc. Use at your own risk.</p>
+    <ul>
+      <li>Native KDE Plasma integration with system notifications and tray icon</li>
+      <li>Text messaging, image, audio and document support</li>
+      <li>KDE Connect integration for phone connectivity status</li>
+      <li>App lock via KWallet</li>
+      <li>Full Kirigami theming with light and dark mode</li>
+    </ul>
+  </description>
+  <url type="homepage">https://github.com</url>
+  <provides>
+    <binary>khaapp</binary>
+    <binary>khaapp-daemon</binary>
+  </provides>
+  <releases>
+    <release version="0.1.0-beta.1" date="2025-01-01">
+      <description>
+        <p>First public beta release. See CHANGELOG.md for full details.</p>
+      </description>
+    </release>
+  </releases>
+  <content_rating type="oars-1.1"/>
+</component>

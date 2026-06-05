@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/Main.qml</file>
+        <file>qml/LoginPage.qml</file>
+        <file>qml/ChatListPage.qml</file>
+        <file>qml/ChatPage.qml</file>
+        <file>qml/LinkPreviewCard.qml</file>
+        <file>qml/SettingsPage.qml</file>
+        <file>qml/LockPage.qml</file>
+        <file>qml/SearchPage.qml</file>
+        <file>qml/components/ErrorBanner.qml</file>
+    </qresource>
+</RCC>
