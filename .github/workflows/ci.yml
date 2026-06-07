@@ -10,32 +10,54 @@ jobs:
   build-daemon:
     name: Build Go daemon
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-go@v5
-        with:
-          go-version: "1.22"
-      - name: Install sqlite dev
-        run: sudo apt-get update && sudo apt-get install -y libsqlite3-dev pkg-config gcc
-      - name: Build
-        run: cd daemon && CGO_ENABLED=1 GOFLAGS="-mod=vendor" go build -v ./cmd
+
+      - name: Update pacman and install dependencies
+        run: |
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed \
+            go gcc sqlite pkgconf base-devel
+
+      - name: Build daemon
+        run: |
+          cd daemon
+          CGO_ENABLED=1 GOFLAGS="-mod=vendor" \
+            go build -v -o /dev/null ./cmd
+
       - name: Vet
         run: cd daemon && go vet ./...
 
   build-frontend:
     name: Build Qt frontend
     runs-on: ubuntu-latest
+    container:
+      image: archlinux:latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install dependencies
+
+      - name: Update pacman and install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y \
-            cmake ninja-build extra-cmake-modules \
-            qt6-base-dev qt6-declarative-dev qt6-multimedia-dev \
-            libkf6kirigami2-dev libkf6notifications-dev libkf6wallet-dev \
-            libkf6kio-dev pkg-config
+          pacman -Syu --noconfirm
+          pacman -S --noconfirm --needed \
+            cmake ninja extra-cmake-modules pkgconf \
+            qt6-base qt6-declarative qt6-multimedia \
+            qt6-tools kirigami knotifications kwallet \
+            kio gcc appstream desktop-file-utils
+
       - name: CMake configure
-        run: cmake -B build -S . -GNinja -DCMAKE_BUILD_TYPE=Release
+        run: |
+          cmake -B build -S . -GNinja \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DQT_DEFAULT_MAJOR_VERSION=6
+
       - name: Build
-        run: cmake --build build --parallel
+        run: cmake --build build --parallel $(nproc)
+
+      - name: Validate desktop file
+        run: desktop-file-validate app/org.khaapp.KhaApp.desktop
+
+      - name: Validate AppStream metadata
+        run: appstreamcli validate app/org.khaapp.KhaApp.appdata.xml
