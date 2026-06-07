@@ -6,6 +6,17 @@ Versioning: [Semantic Versioning](https://semver.org/spec/v2.0.0.html)
 
 ## [Unreleased]
 
+## [0.1.0-beta.2] - 2026-06-07
+
+### Fixed
+- Blank screen after WhatsApp login caused by a duplicate `Component.onCompleted` in the chat list page
+- Removed non-functional `Keys.onPressed` attached to the non-`Item` `ApplicationWindow`
+- Deferred initial page push and focus handling via `Qt.callLater` to avoid graphics-scene warnings
+- Bound `StandardKey.Refresh` via `sequences[]` and dropped the redundant Ctrl+R shortcut
+
+### Added
+- Relocatable bundle launcher for portable single-package distribution
+
 ## [0.1.0-beta.1] - 2025-01-01
 
 ### Added
