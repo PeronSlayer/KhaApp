@@ -66,7 +66,6 @@ Kirigami.Page {
         }
     }
 
-    Component.onCompleted: loadChats()
     Component.onCompleted: {
         loadChats()
         chatListView.currentIndex = 0
