@@ -45,6 +45,7 @@ jobs:
             cmake ninja extra-cmake-modules pkgconf \
             qt6-base qt6-declarative qt6-multimedia \
             qt6-tools kirigami knotifications kwallet \
+            kstatusnotifieritem \
             kio gcc appstream desktop-file-utils
 
       - name: CMake configure

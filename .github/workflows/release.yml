@@ -23,7 +23,7 @@ jobs:
             go gcc sqlite pkgconf base-devel \
             cmake ninja extra-cmake-modules \
             qt6-base qt6-declarative qt6-multimedia qt6-tools \
-            kirigami knotifications kwallet kio \
+            kirigami knotifications kwallet kstatusnotifieritem kio \
             git tar
 
       - name: Build daemon
