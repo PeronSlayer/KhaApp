@@ -104,7 +104,7 @@ Kirigami.ApplicationWindow {
 
     globalDrawer: null
 
-    Component.onCompleted: showInitialPage()
+    Component.onCompleted: Qt.callLater(showInitialPage)
 
     Connections {
         target: appLock
@@ -139,10 +139,6 @@ Kirigami.ApplicationWindow {
     TapHandler {
         acceptedButtons: Qt.AllButtons
         onTapped: root.registerActivity()
-    }
-
-    Keys.onPressed: event => {
-        root.registerActivity()
     }
 
     ErrorBanner {

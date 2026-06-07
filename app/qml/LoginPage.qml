@@ -73,5 +73,5 @@ Kirigami.Page {
         }
     }
 
-    Component.onCompleted: requestQRButton.forceActiveFocus()
+    Component.onCompleted: Qt.callLater(() => requestQRButton.forceActiveFocus())
 }

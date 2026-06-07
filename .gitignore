@@ -26,3 +26,4 @@ daemon/build/
 .flatpak-builder/
 flatpak-build/
 repo/
+dist/

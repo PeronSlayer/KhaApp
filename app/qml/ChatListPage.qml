@@ -73,12 +73,7 @@ Kirigami.Page {
     }
 
     Shortcut {
-        sequence: "Ctrl+R"
-        onActivated: root.loadChats()
-    }
-
-    Shortcut {
-        sequence: StandardKey.Refresh
+        sequences: [StandardKey.Refresh]
         onActivated: root.loadChats()
     }
 

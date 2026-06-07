@@ -14,48 +14,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="99"/>
-        <location filename="../qml/ChatListPage.qml" line="100"/>
+        <location filename="../qml/ChatListPage.qml" line="93"/>
+        <location filename="../qml/ChatListPage.qml" line="94"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="105"/>
+        <location filename="../qml/ChatListPage.qml" line="99"/>
         <source>Phone connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="105"/>
+        <location filename="../qml/ChatListPage.qml" line="99"/>
         <source>Phone offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="110"/>
+        <location filename="../qml/ChatListPage.qml" line="104"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="115"/>
+        <location filename="../qml/ChatListPage.qml" line="109"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="151"/>
+        <location filename="../qml/ChatListPage.qml" line="145"/>
         <source>%1 unread messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="169"/>
+        <location filename="../qml/ChatListPage.qml" line="163"/>
         <source>Chat avatar</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="248"/>
+        <location filename="../qml/ChatListPage.qml" line="242"/>
         <source>No chats yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="249"/>
+        <location filename="../qml/ChatListPage.qml" line="243"/>
         <source>Log in and exchange messages to populate the chat list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -306,7 +306,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="152"/>
+        <location filename="../qml/Main.qml" line="148"/>
         <source>KhaApp daemon is not running. Start khaapp-daemon first.</source>
         <translation type="unfinished"></translation>
     </message>
