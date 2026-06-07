@@ -1,9 +1,11 @@
 build/
+build-flatpak/
 cmake-build-*/
 CMakeCache.txt
 CMakeFiles/
 Makefile
 compile_commands.json
+*.qm
 
 *.pro.user
 *.pro.user.*

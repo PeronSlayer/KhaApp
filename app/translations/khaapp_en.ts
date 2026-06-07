@@ -14,43 +14,48 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="94"/>
-        <location filename="../qml/ChatListPage.qml" line="95"/>
+        <location filename="../qml/ChatListPage.qml" line="99"/>
+        <location filename="../qml/ChatListPage.qml" line="100"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="100"/>
+        <location filename="../qml/ChatListPage.qml" line="105"/>
         <source>Phone connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="100"/>
+        <location filename="../qml/ChatListPage.qml" line="105"/>
         <source>Phone offline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="105"/>
+        <location filename="../qml/ChatListPage.qml" line="110"/>
         <source>Settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="110"/>
+        <location filename="../qml/ChatListPage.qml" line="115"/>
         <source>Logout</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="141"/>
+        <location filename="../qml/ChatListPage.qml" line="151"/>
         <source>%1 unread messages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="236"/>
+        <location filename="../qml/ChatListPage.qml" line="169"/>
+        <source>Chat avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatListPage.qml" line="248"/>
         <source>No chats yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatListPage.qml" line="237"/>
+        <location filename="../qml/ChatListPage.qml" line="249"/>
         <source>Log in and exchange messages to populate the chat list.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -73,49 +78,124 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="371"/>
+        <location filename="../qml/ChatPage.qml" line="139"/>
+        <source>Failed to send message. Check your connection.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="175"/>
+        <source>%1 is typing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="175"/>
+        <source>typing...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="235"/>
+        <source>Chat avatar</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="260"/>
+        <source>%1 members</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="260"/>
+        <source>Group chat</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="314"/>
+        <source>Sent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="375"/>
+        <source>Image message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="382"/>
+        <source>Open image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="388"/>
         <source>Download image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="377"/>
-        <location filename="../qml/ChatPage.qml" line="403"/>
-        <location filename="../qml/ChatPage.qml" line="472"/>
+        <location filename="../qml/ChatPage.qml" line="397"/>
+        <location filename="../qml/ChatPage.qml" line="426"/>
+        <location filename="../qml/ChatPage.qml" line="500"/>
         <source>Media download failed.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="451"/>
+        <location filename="../qml/ChatPage.qml" line="418"/>
+        <source>Pause audio message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="418"/>
+        <source>Play audio message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="444"/>
+        <source>Playback position</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="479"/>
         <source>Document</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="457"/>
+        <location filename="../qml/ChatPage.qml" line="485"/>
         <source>Tap to open</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="457"/>
+        <location filename="../qml/ChatPage.qml" line="485"/>
         <source>Tap to download</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="539"/>
+        <location filename="../qml/ChatPage.qml" line="508"/>
+        <source>Open document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="508"/>
+        <source>Download document</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="569"/>
         <source>No messages yet</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="575"/>
+        <location filename="../qml/ChatPage.qml" line="581"/>
+        <source>Scroll to latest message</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ChatPage.qml" line="608"/>
         <source>Message...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="580"/>
+        <location filename="../qml/ChatPage.qml" line="613"/>
         <source>Message input</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ChatPage.qml" line="595"/>
+        <location filename="../qml/ChatPage.qml" line="628"/>
         <source>Send message</source>
         <translation type="unfinished"></translation>
     </message>
@@ -133,6 +213,11 @@
     <message>
         <location filename="../qml/LinkPreviewCard.qml" line="50"/>
         <source>Link preview image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/LinkPreviewCard.qml" line="78"/>
+        <source>Open link preview</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -244,7 +329,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SearchPage.qml" line="87"/>
+        <location filename="../qml/SearchPage.qml" line="92"/>
         <source>No results</source>
         <translation type="unfinished"></translation>
     </message>
@@ -262,82 +347,87 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="26"/>
+        <location filename="../qml/SettingsPage.qml" line="27"/>
         <source>App lock</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="39"/>
+        <location filename="../qml/SettingsPage.qml" line="44"/>
         <source>Notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="44"/>
+        <location filename="../qml/SettingsPage.qml" line="49"/>
         <source>Desktop notifications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="51"/>
+        <location filename="../qml/SettingsPage.qml" line="60"/>
         <source>KDE Connect</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="55"/>
+        <location filename="../qml/SettingsPage.qml" line="64"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="58"/>
+        <location filename="../qml/SettingsPage.qml" line="67"/>
         <source>Phone connected: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="59"/>
+        <location filename="../qml/SettingsPage.qml" line="68"/>
         <source>KDE Connect running, no phone connected</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="60"/>
+        <location filename="../qml/SettingsPage.qml" line="69"/>
         <source>KDE Connect not running</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="65"/>
+        <location filename="../qml/SettingsPage.qml" line="75"/>
         <source>Refresh</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="71"/>
+        <location filename="../qml/SettingsPage.qml" line="84"/>
         <source>About</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="75"/>
+        <location filename="../qml/SettingsPage.qml" line="88"/>
         <source>Version</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="80"/>
+        <location filename="../qml/SettingsPage.qml" line="93"/>
         <source>License</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="85"/>
+        <location filename="../qml/SettingsPage.qml" line="94"/>
+        <source>GPL-3.0</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/SettingsPage.qml" line="98"/>
         <source>Disclaimer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="86"/>
+        <location filename="../qml/SettingsPage.qml" line="99"/>
         <source>Unofficial client. Not affiliated with Meta.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="96"/>
+        <location filename="../qml/SettingsPage.qml" line="109"/>
         <source>Set app lock PIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsPage.qml" line="110"/>
+        <location filename="../qml/SettingsPage.qml" line="123"/>
         <source>Enter PIN (min 4 digits)</source>
         <translation type="unfinished"></translation>
     </message>

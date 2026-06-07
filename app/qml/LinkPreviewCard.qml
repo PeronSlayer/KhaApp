@@ -74,5 +74,7 @@ Item {
     MouseArea {
         anchors.fill: parent
         onClicked: Qt.openUrlExternally(root.url)
+        Accessible.role: Accessible.Button
+        Accessible.name: qsTr("Open link preview")
     }
 }

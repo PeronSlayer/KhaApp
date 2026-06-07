@@ -52,6 +52,9 @@ Kirigami.Page {
             Layout.fillHeight: true
             clip: true
             model: resultsModel
+            keyNavigationEnabled: true
+            keyNavigationWraps: false
+            focus: true
 
             delegate: ItemDelegate {
                 required property string text
@@ -59,6 +62,8 @@ Kirigami.Page {
 
                 width: resultsList.width
                 onClicked: applicationWindow().pageStack.pop()
+                Keys.onReturnPressed: clicked()
+                Keys.onEnterPressed: clicked()
                 activeFocusOnTab: true
                 Accessible.role: Accessible.ListItem
                 Accessible.name: text
@@ -87,4 +92,6 @@ Kirigami.Page {
             text: qsTr("No results")
         }
     }
+
+    Component.onCompleted: searchField.forceActiveFocus(Qt.TabFocusReason)
 }

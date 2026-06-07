@@ -23,6 +23,7 @@ Kirigami.ScrollablePage {
         }
 
         CheckBox {
+            id: appLockCheckBox
             Kirigami.FormData.label: qsTr("App lock")
             checked: appLock.lockEnabled
             onToggled: {
@@ -32,6 +33,10 @@ Kirigami.ScrollablePage {
                     appLock.disableLock()
                 }
             }
+            activeFocusOnTab: true
+            Accessible.role: Accessible.CheckBox
+            Accessible.name: Kirigami.FormData.label
+            Accessible.checked: checked
         }
 
         Kirigami.Separator {
@@ -44,6 +49,10 @@ Kirigami.ScrollablePage {
             Kirigami.FormData.label: qsTr("Desktop notifications")
             checked: localSettings.desktopNotifications
             onToggled: localSettings.desktopNotifications = checked
+            activeFocusOnTab: true
+            Accessible.role: Accessible.CheckBox
+            Accessible.name: Kirigami.FormData.label
+            Accessible.checked: checked
         }
 
         Kirigami.Separator {
@@ -62,8 +71,12 @@ Kirigami.ScrollablePage {
         }
 
         Button {
+            id: refreshButton
             text: qsTr("Refresh")
             onClicked: kdeConnect.refresh()
+            activeFocusOnTab: true
+            Accessible.role: Accessible.Button
+            Accessible.name: text
         }
 
         Kirigami.Separator {
@@ -78,7 +91,7 @@ Kirigami.ScrollablePage {
 
         Label {
             Kirigami.FormData.label: qsTr("License")
-            text: "GPL-3.0"
+            text: qsTr("GPL-3.0")
         }
 
         Label {
@@ -109,6 +122,11 @@ Kirigami.ScrollablePage {
             echoMode: TextInput.Password
             placeholderText: qsTr("Enter PIN (min 4 digits)")
             inputMethodHints: Qt.ImhDigitsOnly
+            activeFocusOnTab: true
+            Accessible.role: Accessible.EditableText
+            Accessible.name: placeholderText
         }
     }
+
+    Component.onCompleted: appLockCheckBox.forceActiveFocus(Qt.TabFocusReason)
 }

@@ -67,6 +67,11 @@ Kirigami.Page {
     }
 
     Component.onCompleted: loadChats()
+    Component.onCompleted: {
+        loadChats()
+        chatListView.currentIndex = 0
+        chatListView.forceActiveFocus(Qt.TabFocusReason)
+    }
 
     Shortcut {
         sequence: "Ctrl+R"
@@ -121,6 +126,9 @@ Kirigami.Page {
         anchors.fill: parent
         clip: true
         model: chatModel
+        keyNavigationEnabled: true
+        keyNavigationWraps: false
+        focus: true
 
         delegate: ItemDelegate {
             required property string jid
@@ -135,6 +143,8 @@ Kirigami.Page {
             onClicked: {
                 applicationWindow().openChat(jid, name.length > 0 ? name : jid, avatar_path)
             }
+            Keys.onReturnPressed: clicked()
+            Keys.onEnterPressed: clicked()
             activeFocusOnTab: true
             Accessible.role: Accessible.ListItem
             Accessible.name: (name.length > 0 ? name : jid) + ", " + last_message
@@ -155,6 +165,8 @@ Kirigami.Page {
                         source: avatar_path !== "" ? ("file://" + avatar_path) : ""
                         visible: avatar_path !== ""
                         fillMode: Image.PreserveAspectCrop
+                        Accessible.role: Accessible.Graphic
+                        Accessible.name: qsTr("Chat avatar")
                     }
 
                     Text {

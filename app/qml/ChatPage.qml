@@ -134,7 +134,11 @@ Kirigami.Page {
         if (outgoingText.length === 0) {
             return
         }
-        bridge.sendTextMessage(root.jid, outgoingText)
+        const messageId = bridge.sendTextMessage(root.jid, outgoingText)
+        if (messageId === "") {
+            errorBanner.errorText = qsTr("Failed to send message. Check your connection.")
+            return
+        }
         bridge.markAsRead(root.jid)
         textField.clear()
         root.reloadMessages()
@@ -168,7 +172,7 @@ Kirigami.Page {
             if (incomingJid !== root.jid) {
                 return
             }
-            root.typingText = root.isGroup ? (senderJid + " is typing...") : "typing..."
+            root.typingText = root.isGroup ? qsTr("%1 is typing...").arg(senderJid) : qsTr("typing...")
             typingTimer.restart()
         }
 
@@ -189,6 +193,7 @@ Kirigami.Page {
         refreshGroupInfo()
         bridge.markAsRead(root.jid)
         reloadMessages()
+        listView.forceActiveFocus(Qt.TabFocusReason)
     }
 
     onVisibleChanged: {
@@ -226,6 +231,8 @@ Kirigami.Page {
                         source: root.avatarPath !== "" ? ("file://" + root.avatarPath) : ""
                         visible: root.avatarPath !== ""
                         fillMode: Image.PreserveAspectCrop
+                        Accessible.role: Accessible.Graphic
+                        Accessible.name: qsTr("Chat avatar")
                     }
 
                     Text {
@@ -250,7 +257,7 @@ Kirigami.Page {
 
                     Label {
                         visible: root.isGroup
-                        text: root.groupMemberCount > 0 ? (root.groupMemberCount + " members") : "Group chat"
+                        text: root.groupMemberCount > 0 ? qsTr("%1 members").arg(root.groupMemberCount) : qsTr("Group chat")
                         color: Kirigami.Theme.disabledTextColor
                         font.pointSize: 11
                     }
@@ -269,6 +276,9 @@ Kirigami.Page {
                 boundsBehavior: Flickable.DragAndOvershootBounds
                 spacing: Kirigami.Units.smallSpacing
                 model: messageModel
+                keyNavigationEnabled: true
+                keyNavigationWraps: false
+                focus: true
                 ScrollBar.vertical: ScrollBar {
                     policy: ScrollBar.AsNeeded
                 }
@@ -300,6 +310,9 @@ Kirigami.Page {
 
                     width: listView.width
                     height: bubbleColumn.implicitHeight + Kirigami.Units.smallSpacing
+                    Accessible.role: Accessible.StaticText
+                    Accessible.name: (from_me ? qsTr("Sent") : (sender_name !== "" ? sender_name : sender_jid)) + ": " + text
+                    Accessible.description: Qt.formatDateTime(new Date(Number(timestamp) * 1000), "hh:mm dd/MM/yyyy")
 
                     Column {
                         id: bubbleColumn
@@ -358,17 +371,24 @@ Kirigami.Page {
                                             fillMode: Image.PreserveAspectCrop
                                             source: bubbleDelegate.resolvedLocalPath !== "" ? ("file://" + bubbleDelegate.resolvedLocalPath) : ""
                                             visible: bubbleDelegate.resolvedLocalPath !== ""
+                                            Accessible.role: Accessible.Graphic
+                                            Accessible.name: qsTr("Image message")
 
                                             MouseArea {
                                                 anchors.fill: parent
                                                 enabled: bubbleDelegate.resolvedLocalPath !== ""
                                                 onClicked: bridge.openLocalFile(bubbleDelegate.resolvedLocalPath)
+                                                Accessible.role: Accessible.Button
+                                                Accessible.name: qsTr("Open image")
                                             }
                                         }
 
                                         Button {
                                             visible: bubbleDelegate.resolvedLocalPath === ""
                                             text: qsTr("Download image")
+                                            activeFocusOnTab: true
+                                            Accessible.role: Accessible.Button
+                                            Accessible.name: text
                                             onClicked: {
                                                 const path = bridge.downloadMedia(bubbleDelegate.id, root.jid)
                                                 if (path !== "") {
@@ -393,6 +413,9 @@ Kirigami.Page {
 
                                         Button {
                                             icon.name: player.playbackState === MediaPlayer.PlayingState ? "media-playback-pause" : "media-playback-start"
+                                            activeFocusOnTab: true
+                                            Accessible.role: Accessible.Button
+                                            Accessible.name: player.playbackState === MediaPlayer.PlayingState ? qsTr("Pause audio message") : qsTr("Play audio message")
                                             onClicked: {
                                                 if (bubbleDelegate.resolvedLocalPath === "") {
                                                     const path = bridge.downloadMedia(bubbleDelegate.id, root.jid)
@@ -417,6 +440,11 @@ Kirigami.Page {
                                             value: player.position
                                             onMoved: player.position = value
                                             Layout.fillWidth: true
+                                            Accessible.role: Accessible.Slider
+                                            Accessible.name: qsTr("Playback position")
+                                            Accessible.minimumValue: from
+                                            Accessible.maximumValue: to
+                                            Accessible.value: value
                                         }
 
                                         Text {
@@ -476,6 +504,8 @@ Kirigami.Page {
                                                     bridge.openLocalFile(bubbleDelegate.resolvedLocalPath)
                                                 }
                                             }
+                                            Accessible.role: Accessible.Button
+                                            Accessible.name: bubbleDelegate.resolvedLocalPath !== "" ? qsTr("Open document") : qsTr("Download document")
                                         }
                                     }
                                 }
@@ -546,6 +576,9 @@ Kirigami.Page {
                 visible: !listView.atYEnd
                 icon.name: "go-bottom"
                 onClicked: listView.positionViewAtEnd()
+                activeFocusOnTab: true
+                Accessible.role: Accessible.Button
+                Accessible.name: qsTr("Scroll to latest message")
             }
         }
 
